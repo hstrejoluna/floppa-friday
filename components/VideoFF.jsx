@@ -1,29 +1,24 @@
 import { useState } from "react";
 import React from "react";
 import { StyleSheet, Button, Text, View } from "react-native";
-import VideoFF from "./VideoFF";
 import { Video, AVPlaybackStatus } from "expo-av";
 import { useAssets } from "expo-asset";
 
-export default function Buttons() {
+export default function VideoFF(props) {
   const [isFloppaFriday, setIsFloppaFriday] = useState(false);
   const [doomer, setDoomer] = useState(false);
 
   const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
   return (
     <View style={styles.container}>
-      <VideoFF />
-      <View style={styles.buttons}>
-        <Button
-          title={status.isPlaying ? "Pause" : "Play"}
-          onPress={() =>
-            status.isPlaying
-              ? video.current.pauseAsync()
-              : video.current.playAsync()
-          }
-        />
-      </View>
+      <Video
+        ref={video}
+        style={styles.video}
+        source={require("../assets/floppafriday.mp4")}
+        resizeMode="contain"
+        isLooping
+        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+      />
     </View>
   );
 }
@@ -39,7 +34,7 @@ const styles = StyleSheet.create({
     width: 320,
     height: 200,
   },
-  buttons: {
+  VideoFF: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
