@@ -11,6 +11,12 @@ export default function Buttons() {
   const video = React.useRef(null);
   const videoDoomer = React.useRef(null);
   const [status, setStatus] = React.useState({});
+
+  const playVideo = () => {
+    
+    video.current.playAsync();
+  };
+
   return (
     <View style={styles.container}>
       <Video
