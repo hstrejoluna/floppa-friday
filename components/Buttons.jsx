@@ -1,7 +1,6 @@
 import { useState } from "react";
 import React from "react";
 import { StyleSheet, Button, Text, View } from "react-native";
-import { Video, AVPlaybackStatus } from "expo-av";
 import VideoFF from "./VideoFF";
 
 import { useAssets } from "expo-asset";
