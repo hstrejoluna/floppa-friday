@@ -20,7 +20,7 @@ export default function Buttons() {
 
   return (
     <View style={styles.container}>
-        <VideoFF source='floppadoomer.mp4' />
+        <VideoFF source='floppadoomer.mp4' ref={video} />
       <View style={styles.buttons}>
         <Button
           title={status.isPlaying ? "PAUSE" : "PLAY"}
