@@ -5,15 +5,15 @@ import VideoFF from "./VideoFF";
 import { Video, AVPlaybackStatus } from "expo-av";
 import { useAssets } from "expo-asset";
 
-export default function Buttons() {
+export default function Buttons(props) {
   const [isFloppaFriday, setIsFloppaFriday] = useState(false);
   const [doomer, setDoomer] = useState(false);
 
   const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
+  const status = VideoFF.status;
   return (
     <View style={styles.container}>
-      <VideoFF />
+      <VideoFF status={status}/>
       <View style={styles.buttons}>
         <Button
           title={status.isPlaying ? "Pause" : "Play"}
