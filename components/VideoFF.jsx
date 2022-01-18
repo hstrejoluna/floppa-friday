@@ -9,6 +9,7 @@ export default function VideoFF(props) {
   const [doomer, setDoomer] = useState(false);
 
   const video = React.useRef(null);
+  const [status, setStatus] = React.useState({});
   return (
     <View style={styles.container}>
       <Video
