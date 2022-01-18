@@ -11,16 +11,14 @@ export default function VideoFF(props) {
   const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   return (
-    <View style={styles.container}>
-      <Video
-        ref={video}
-        style={styles.video}
-        source={require("../assets/floppafriday.mp4")}
-        resizeMode="contain"
-        isLooping
-        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-      />
-    </View>
+    <Video
+      ref={video}
+      style={styles.video}
+      source={require(`../assets/${props.source}`)}
+      resizeMode="contain"
+      isLooping
+      onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+    />
   );
 }
 
