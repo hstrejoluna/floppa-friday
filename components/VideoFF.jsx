@@ -8,11 +8,10 @@ export default function VideoFF(props) {
   const [isFloppaFriday, setIsFloppaFriday] = useState(false);
   const [doomer, setDoomer] = useState(false);
 
-  const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   return (
     <Video
-      ref={video}
+      ref={props.ref}
       style={styles.video}
       source={require(`../assets/${props.source}`)}
       resizeMode="contain"

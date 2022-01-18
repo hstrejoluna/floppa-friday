@@ -10,6 +10,7 @@ export default function Buttons() {
   const [isFloppaFriday, setIsFloppaFriday] = useState(false);
   const [doomer, setDoomer] = useState(false);
   const [status, setStatus] = React.useState({});
+  const video = React.useRef(null);
 
   const playVideoDoomer = () => {
     setDoomer(true);
