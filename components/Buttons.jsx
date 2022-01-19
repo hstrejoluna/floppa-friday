@@ -6,6 +6,7 @@ import { useAssets } from "expo-asset";
 
 export default function Buttons() {
   const [isFloppaFriday, setIsFloppaFriday] = useState(false);
+  const [nvideo, setNvideo] = useState(false);
   const [doomer, setDoomer] = useState(false);
 
   const video = React.useRef(null);
@@ -22,11 +23,21 @@ export default function Buttons() {
     videoDoomer.current.pauseAsync();
   };
 
+  const playVideo = (view) => {
+    setNvideo(view);
+    video.current.playAsync();
+  };
+
+  const pauseVideo = (view) => {
+    setNvideo(view);
+    video.current.pauseAsync();
+  };
+
   return (
     <View style={styles.container}>
       <Video
         ref={video}
-        style={styles.video}
+        style={[nvideo ? styles.video : styles.videoDoomer]}
         source={require("../assets/floppafriday.mp4")}
         resizeMode="contain"
         isLooping
@@ -45,9 +56,7 @@ export default function Buttons() {
         <Button
           title={status.isPlaying ? "PAUSE" : "PLAY"}
           onPress={() =>
-            status.isPlaying
-              ? video.current.pauseAsync()
-              : video.current.playAsync()
+            status.isPlaying ? pauseVideo(false) : playVideo(true)
           }
         />
         <Button
