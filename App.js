@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import Buttons from "./components/Buttons";
 
 export default function App() {
@@ -13,11 +13,21 @@ export default function App() {
     }
   }, []);
 
-  
+  function isnotFriday() {
+    return (
+      <>
+        <Image
+          source={require("./assets/notfriday.png")}
+          style={styles.image}
+        />
+        <Text style={styles.text}>It's not Friday yet!</Text>
+      </>
+    );
+  }
 
   return (
     <View style={styles.container}>
-      {isFriday ? <Buttons /> : <Text style={styles.text}>It's not Friday yet!</Text>}
+      {isFriday ? <Buttons /> : isnotFriday()}
       <StatusBar style="auto" />
     </View>
   );
@@ -30,8 +40,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  text:{
+  image: {
+    width: 300,
+    height: 300,
+  },
+  text: {
     color: "#fff",
     fontSize: 30,
-  }
+  },
 });
