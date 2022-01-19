@@ -1,15 +1,13 @@
-import { useState } from "react";
-import React from "react";
+import { useState, useRef } from "react";
 import { ImageBackground, StyleSheet, Button, View } from "react-native";
 import { Video } from "expo-av";
 
 export default function Buttons() {
   const [nvideo, setNvideo] = useState(false);
   const [doomer, setDoomer] = useState(false);
-
-  const video = React.useRef(null);
-  const videoDoomer = React.useRef(null);
-  const [status, setStatus] = React.useState({});
+  const video = useRef(null);
+  const videoDoomer = useRef(null);
+  const [status, setStatus] = useState({});
 
   const playVideoDoomer = (view) => {
     setDoomer(view);
