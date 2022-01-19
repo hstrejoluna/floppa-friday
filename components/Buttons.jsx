@@ -34,12 +34,13 @@ export default function Buttons() {
   };
 
   const fireworks = require("../assets/fireworks.gif");
+  const doomerbackground = require("../assets/doomer.gif");
   const favicon = require("../assets/favicon.png");
 
   return (
-    <View style={[nvideo ? styles.celebration : styles.container]}>
+    <View style={[nvideo ? styles.celebration :  styles.container]}>
       <ImageBackground
-        source={ nvideo ? fireworks : favicon }
+        source={ nvideo ? fireworks : doomer ? doomerbackground : favicon }
         style={styles.background}
       >
         <Video
