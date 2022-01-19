@@ -1,5 +1,4 @@
-import { useState } from "react";
-import React from "react";
+import { useState, useRef } from "react";
 import { StyleSheet, Button, Text, View } from "react-native";
 import VideoFF from "./VideoFF";
 
@@ -8,8 +7,9 @@ import { useAssets } from "expo-asset";
 export default function Buttons() {
   const [isFloppaFriday, setIsFloppaFriday] = useState(false);
   const [doomer, setDoomer] = useState(false);
-  const [status, setStatus] = React.useState({});
-  const video = React.useRef(null);
+  const [status, setStatus] = useState({});
+  const video = useRef(null);
+ 
 
   const playVideoDoomer = () => {
     setDoomer(true);
@@ -19,7 +19,7 @@ export default function Buttons() {
 
   return (
     <View style={styles.container}>
-        <VideoFF source='floppadoomer.mp4' ref={video} />
+      <VideoFF source="floppadoomer.mp4" ref={video} status={status} AVPlaybackStatus={(status) => setStatus(() => status)} />
       <View style={styles.buttons}>
         <Button
           title={status.isPlaying ? "PAUSE" : "PLAY"}
@@ -32,9 +32,7 @@ export default function Buttons() {
         <Button
           title={status.isPlaying ? "PAUSE DOOMER" : "DOOMER"}
           onPress={() =>
-            status.isPlaying
-              ? video.current.pauseAsync()
-              : playVideoDoomer()
+            status.isPlaying ? video.current.pauseAsync() : playVideoDoomer()
           }
         />
       </View>
