@@ -12,10 +12,14 @@ export default function Buttons() {
   const videoDoomer = React.useRef(null);
   const [status, setStatus] = React.useState({});
 
-  const playVideoDoomer = () => {
-    setDoomer(true);
-    
+  const playVideoDoomer = (view) => {
+    setDoomer(view);
     videoDoomer.current.playAsync();
+  };
+
+  const pauseVideoDoomer = (view) => {
+    setDoomer(view);
+    videoDoomer.current.pauseAsync();
   };
 
   return (
@@ -30,7 +34,7 @@ export default function Buttons() {
       />
       <Video
         ref={videoDoomer}
-        style={styles.videoDoomer}
+        style={[doomer ? styles.video : styles.videoDoomer]}
         source={require("../assets/floppadoomer.mp4")}
         resizeMode="contain"
         isLooping
@@ -49,15 +53,12 @@ export default function Buttons() {
         <Button
           title={status.isPlaying ? "PAUSE DOOMER" : "DOOMER"}
           onPress={() =>
-            status.isPlaying
-              ? videoDoomer.current.pauseAsync()
-              : playVideoDoomer()
+            status.isPlaying ? pauseVideoDoomer(false) : playVideoDoomer(true)
           }
         />
       </View>
     </View>
   );
- 
 }
 
 const styles = StyleSheet.create({
