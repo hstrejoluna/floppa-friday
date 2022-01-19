@@ -31,12 +31,12 @@ export default function Buttons() {
 
   const fireworks = require("../assets/fireworks.gif");
   const doomerbackground = require("../assets/doomer.gif");
-  const favicon = require("../assets/favicon.png");
+  const defaultbackground = require("../assets/defaultbackground.gif");
 
   return (
     <View style={[nvideo ? styles.celebration :  styles.container]}>
       <ImageBackground
-        source={ nvideo ? fireworks : doomer ? doomerbackground : favicon }
+        source={ nvideo ? fireworks : doomer ? doomerbackground : defaultbackground }
         style={styles.background}
       >
         <Video
@@ -83,7 +83,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#ecf0f1",
+    width: "100%",
+    backgroundColor: "#000",
   },
   celebration: {
     flex: 1,
@@ -92,8 +93,8 @@ const styles = StyleSheet.create({
   },
   video: {
     alignSelf: "center",
-    width: 320,
-    height: 200,
+    width: 420,
+    height: 400,
   },
   videoDoomer: {
     display: "none",

@@ -11,6 +11,9 @@ export default function App() {
     if (today === 5) {
       setIsFriday(true);
     }
+    else{
+      setIsFriday(false);
+    }
   }, []);
 
   function isnotFriday() {
@@ -20,7 +23,7 @@ export default function App() {
           source={require("./assets/notfriday.png")}
           style={styles.image}
         />
-        <Text style={styles.text}>It's not Friday yet!</Text>
+        <Text style={styles.text}>It's not Friday yet! come back on friday</Text>
       </>
     );
   }
@@ -46,6 +49,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#fff",
-    fontSize: 30,
+    fontSize: 20,
   },
 });
