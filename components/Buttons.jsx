@@ -1,11 +1,9 @@
 import { useState } from "react";
 import React from "react";
-import { ImageBackground, StyleSheet, Button, Text, View } from "react-native";
-import { Video, AVPlaybackStatus } from "expo-av";
-import { useAssets } from "expo-asset";
+import { ImageBackground, StyleSheet, Button, View } from "react-native";
+import { Video } from "expo-av";
 
 export default function Buttons() {
-  const [isFloppaFriday, setIsFloppaFriday] = useState(false);
   const [nvideo, setNvideo] = useState(false);
   const [doomer, setDoomer] = useState(false);
 
