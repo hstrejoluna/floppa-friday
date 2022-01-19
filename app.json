@@ -22,11 +22,11 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.floppafriday.hstrejoluna"
+      "package": "com.floppafriday.hstrejoluna",
+      "permissions": []
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "permissions": []
+    }
   }
 }
