@@ -1,6 +1,6 @@
 import { useState } from "react";
 import React from "react";
-import { StyleSheet, Button, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Button, Text, View } from "react-native";
 import { Video, AVPlaybackStatus } from "expo-av";
 import { useAssets } from "expo-asset";
 
@@ -33,45 +33,62 @@ export default function Buttons() {
     video.current.pauseAsync();
   };
 
-  return (
-    <View style={styles.container}>
-      <Video
-        ref={video}
-        style={[nvideo ? styles.video : styles.videoDoomer]}
-        source={require("../assets/floppafriday.mp4")}
-        resizeMode="contain"
-        isLooping
-        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-      />
-      <Video
-        ref={videoDoomer}
-        style={[doomer ? styles.video : styles.videoDoomer]}
-        source={require("../assets/floppadoomer.mp4")}
-        resizeMode="contain"
-        isLooping
-        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
-      />
+  const fireworks = require("../assets/fireworks.gif");
+  const favicon = require("../assets/favicon.png");
 
-      <View style={styles.buttons}>
-        <Button
-          title={status.isPlaying ? "PAUSE" : "PLAY"}
-          onPress={() =>
-            status.isPlaying ? pauseVideo(false) : playVideo(true)
-          }
+  return (
+    <View style={[nvideo ? styles.celebration : styles.container]}>
+      <ImageBackground
+        source={ nvideo ? fireworks : favicon }
+        style={styles.background}
+      >
+        <Video
+          ref={video}
+          style={[nvideo ? styles.video : styles.videoDoomer]}
+          source={require("../assets/floppafriday.mp4")}
+          resizeMode="contain"
+          isLooping
+          onPlaybackStatusUpdate={(status) => setStatus(() => status)}
         />
-        <Button
-          title={status.isPlaying ? "PAUSE DOOMER" : "DOOMER"}
-          onPress={() =>
-            status.isPlaying ? pauseVideoDoomer(false) : playVideoDoomer(true)
-          }
+        <Video
+          ref={videoDoomer}
+          style={[doomer ? styles.video : styles.videoDoomer]}
+          source={require("../assets/floppadoomer.mp4")}
+          resizeMode="contain"
+          isLooping
+          onPlaybackStatusUpdate={(status) => setStatus(() => status)}
         />
-      </View>
+
+        <View style={styles.buttons}>
+          <Button
+            title={status.isPlaying ? "PAUSE" : "PLAY"}
+            onPress={() =>
+              status.isPlaying ? pauseVideo(false) : playVideo(true)
+            }
+          />
+          <Button
+            title={status.isPlaying ? "PAUSE DOOMER" : "DOOMER"}
+            onPress={() =>
+              status.isPlaying ? pauseVideoDoomer(false) : playVideoDoomer(true)
+            }
+          />
+        </View>
+      </ImageBackground>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    justifyContent: "center",
+  },
   container: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: "#ecf0f1",
+  },
+  celebration: {
     flex: 1,
     justifyContent: "center",
     backgroundColor: "#ecf0f1",
