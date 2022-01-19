@@ -10,8 +10,7 @@ export default function App() {
     const today = new Date().getDay();
     if (today === 5) {
       setIsFriday(true);
-    }
-    else{
+    } else {
       setIsFriday(false);
     }
   }, []);
@@ -23,7 +22,9 @@ export default function App() {
           source={require("./assets/notfriday.png")}
           style={styles.image}
         />
-        <Text style={styles.text}>It's not Friday yet! come back on friday</Text>
+        <Text style={styles.text}>
+          It's not Friday yet! come back on friday
+        </Text>
       </>
     );
   }

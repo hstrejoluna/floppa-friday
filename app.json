@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "floppa-friday",
+    "name": "Floppa Friday",
     "slug": "floppa-friday",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,9 +21,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.floppafriday.hstrejoluna"
     },
     "web": {
       "favicon": "./assets/favicon.png"
