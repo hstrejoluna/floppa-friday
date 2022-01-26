@@ -1,9 +1,18 @@
 import { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
+import { Appodeal, AppodealAdType } from "react-native-appodeal";
 import { StyleSheet, Text, View, Image } from "react-native";
 import Buttons from "./components/Buttons";
 
 export default function App() {
+
+  const adTypes =
+    AppodealAdType.INTERSTITIAL |
+    AppodealAdType.REWARDED_VIDEO |
+    AppodealAdType.BANNER;
+  const consent = true;
+  Appodeal.initialize("Your app key", adTypes, consent);
+  
   const [isFriday, setIsFriday] = useState(false);
 
   useEffect(() => {
